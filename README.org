@@ -1,0 +1,27 @@
+#+STARTUP: showall
+* My emacs literate configuration file
+My config requires evil-mode, org-mode and use-package. If you want to use it,
+make sure you have at least previously installed use-package. A minimal working ~/.emacs can
+look like this:
+
+#+BEGIN_SRC emacs-lisp
+;; Change to your .emacs.d/ directory accordingly
+(setq user-emacs-directory "/home/trajanus/.emacs.d") 
+
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+(package-initialize)
+(require 'package)
+(require 'use-package)
+
+(use-package org
+  :ensure t)
+(use-package evil
+  :ensure t)
+(evil-mode 1)
+
+;; Change to the path where you cloned the config to
+(org-babel-load-file "/home/trajanus/.emacs.d/myinit.org")
+
+#+END_SRC
