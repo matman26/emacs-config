@@ -1,0 +1,1 @@
+/home/trajanus/.emacs.d/myinit.org
