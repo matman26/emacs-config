@@ -1,0 +1,62 @@
+\documentclass[a5paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.2 in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{pgfpages}
+\pgfpagesuselayout{2 on 1}[a4paper]
+%%% List formatting stuff
+\setitemize{noitemsep}
+\setenumerate{noitemsep}
+\pagenumbering{gobble}
+
+%%% Coloring macros
+\newcommand{\cred}[1]{\textcolor{red}{#1}}
+\newcommand{\cblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\ccyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\cgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\cyellow}[1]{\textcolor{yellow}{#1}}
+\newcommand{\cpurple}[1]{\textcolor{purple}{#1}}
+\newcommand{\corange}[1]{\textcolor{orange}{#1}}
+
+%%% Macros 
+\newcommand{\borange}[1]{\colorbox{BurntOrange}{#1}}
+\newcommand{\http}{{\cblue{HTTP}}}
+\newcommand{\dns}{{\corange{DNS}}}
+\newcommand{\ptp}{{\cred{P2P}}}
+\newcommand{\spdy}{{\cpurple{SPDY}}}
+\newcommand{\cache}{{\cred{cache}}}
+\newcommand{\caches}{{\cred{caches}}}
+\newcommand{\lfu}{{\corange{LFU}}}
+\newcommand{\lru}{{\cgreen{LRU}}}
+\newcommand{\dht}{{\cgreen{DHT}}}
+\newcommand{\cookie}{\cgreen{cookie}}
+\newcommand{\cookies}{\cgreen{cookies}}
+\newcommand{\hit}{$P_{hit}$}
+
+
+%%% Section Formatting stuff
+\titleformat{\section}
+{\color{red} \large \bfseries}
+{}
+{0em}
+{}
+\titlespacing{\section}{0pt}{2pt}{2pt}% \titlespacing{<command>}{<left>}{<before-sep>}{<after-sep>}[<right>]
+
+\titleformat{\subsection}
+{\color{blue} \bfseries}
+{}
+{0em}
+{}
+\titlespacing{\subsection}{0pt}{2pt}{2pt}% \titlespacing{<command>}{<left>}{<before-sep>}{<after-sep>}[<right>]
+
+\titleformat{\subsubsection}
+{\color{purple} \bfseries}
+{}
+{0em}
+{}
+\titlespacing{\subsubsection}{0pt}{2pt}{2pt}% \titlespacing{<command>}{<left>}{<before-sep>}{<after-sep>}[<right>]
