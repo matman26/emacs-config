@@ -39,7 +39,7 @@ look like this:
   folder sv/emacs to your /var/service/ directory. 
 
   #+BEGIN_SRC bash
-  ln -s ${PWD}/sv/emacs /var/service
+  ln -s ${PWD}/sv/emacs /var/service/
   #+END_SRC
   
   The logging allows you to troubleshoot if you find any issues, so do
