@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u trajanus svlogd -tt /opt/logs/emacs

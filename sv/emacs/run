@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u trajanus emacs -u trajanus --fg-daemon  2>&1

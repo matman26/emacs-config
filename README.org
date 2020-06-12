@@ -23,5 +23,37 @@ look like this:
 
 ;; Change to the path where you cloned the config to
 (org-babel-load-file "/home/trajanus/.emacs.d/myinit.org")
-
 #+END_SRC
+
+* Emacs runit service
+  If you are on a Linux distribution which uses runit, you can also use
+  my runit service for running Emacs in server mode. 
+
+  Before doing so, you should change the owner of the emacs service by
+  changing "trajanus" to the name of your user on the run scripts at
+  sv/emacs/ and sv/emacs/log/. Notice you can also change the path
+  inside the script sv/emacs/log/run to move your server logs to 
+  another directory.
+
+  Once that is done, you can enable the service by symlinking the
+  folder sv/emacs to your /var/service/ directory. 
+
+  #+BEGIN_SRC bash
+  ln -s ${PWD}/sv/emacs /var/service
+  #+END_SRC
+  
+  The logging allows you to troubleshoot if you find any issues, so do
+  leave it enabled if you are setting it up for the first time. Once
+  that is done, you can add something like this to your rc.local file:
+   
+  #+BEGIN_SRC bash
+  export EDITOR="emacsclient -nc"
+  #+END_SRC
+  
+  To use the graphical emacs client as your default editor, 
+  it may be necessary to also run the command:
+
+  #+BEGIN_SRC bash
+  xhost +
+  #+END_SRC
+  
