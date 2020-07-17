@@ -27,6 +27,7 @@
 
 ;; Misc stuff
 (fset 'yes-or-no-p 'y-or-n-p)
+(setenv "HOME" "/home/trajanus/")
 (server-start)
 #+END_SRC
 
@@ -68,11 +69,11 @@
 #+BEGIN_SRC emacs-lisp
 (use-package helm
   :ensure t)
+(require 'helm-config)
 
 (setq helm-split-window-in-side-p t
       helm-move-to-line-cycle-in-source t)
   
-(require 'helm-config)
   
 ;; Most of Emacs prompts become helm-enabled
 (helm-mode 1)

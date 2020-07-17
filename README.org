@@ -31,7 +31,7 @@ look like this:
    |---------+-----------------------------------+-------------------|
    | C-x C-w | Write Current Buffer              | :write <filename> |
    | C-x C-s | Save Current Buffer               | :write            |
-   | C-x C-s | Save all open Buffers             |                   |
+   | C-x s   | Save all open Buffers             |                   |
    | C-x b   | Switch Buffers                    | :buffer           |
    | C-x i   | Copy file to current buffer       | :read <filename>  |
    | C-x k   | Kill Buffer                       | :quit             |
