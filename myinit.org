@@ -61,47 +61,40 @@
 ** Which-key
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
-  :ensure t
-  :config (which-key-mode))
+  :config 
+    (setq which-key-idle-delay 0.3)
+    (setq which-key-popup-type 'frame)
+    (which-key-mode)
+    (which-key-setup-minibuffer)
+    (set-face-attribute 'which-key-local-map-description-face nil 
+       :weight 'bold)
+  :ensure t)
 #+END_SRC
 
 ** Helm for navigation
 #+BEGIN_SRC emacs-lisp
 (use-package helm
+  :init
+    (require 'helm-config)
+    (setq helm-split-window-in-side-p t
+          helm-move-to-line-cycle-in-source t)
+  :config 
+    (helm-mode 1) ;; Most of Emacs prompts become helm-enabled
+    (helm-autoresize-mode 1) ;; Helm resizes according to the number of candidates
+    (global-set-key (kbd "C-x b") 'helm-buffers-list) ;; List buffers ( Emacs way )
+    (define-key evil-ex-map "b" 'helm-buffers-list) ;; List buffers ( Vim way )
+    (global-set-key (kbd "C-x r b") 'helm-bookmarks) ;; Bookmarks menu
+    (global-set-key (kbd "C-x C-f") 'helm-find-files) ;; Finding files with Helm
+    (global-set-key (kbd "M-c") 'helm-calcul-expression) ;; Use Helm for calculations
+    (global-set-key (kbd "C-s") 'helm-occur)  ;; Replaces the default isearch keybinding
+    (global-set-key (kbd "C-h a") 'helm-apropos)  ;; Helmized apropos interface
+    (global-set-key (kbd "M-x") 'helm-M-x)  ;; Improved M-x menu
+    (global-set-key (kbd "M-y") 'helm-show-kill-ring)  ;; Show kill ring, pick something to paste
   :ensure t)
-(require 'helm-config)
-
-(setq helm-split-window-in-side-p t
-      helm-move-to-line-cycle-in-source t)
-  
-  
-;; Most of Emacs prompts become helm-enabled
-(helm-mode 1)
-
-;; List buffers ( Emacs way )
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-;; List buffers ( Vim way )
-(define-key evil-ex-map "b" 'helm-buffers-list)
-
-;; Bookmarks menu
-(global-set-key (kbd "C-x r b") 'helm-bookmarks)
-
-;; Finding files with Helm
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-;; Use Helm for calculations
-(global-set-key (kbd "M-c") 'helm-calcul-expression)
-
-;; Improved Occur ( find stuff on buffer with regexp )
-;; Replaces the default isearch keybinding
-(global-set-key (kbd "C-s") 'helm-occur) 
-
-;; Improved M-x menu
-(global-set-key (kbd "M-x") 'helm-M-x)
-
-;; Show kill ring, pick something to paste
-(global-set-key (kbd "M-y") 'helm-show-kill-ring) 
 #+END_SRC
+
+#+RESULTS:
+: t
 
 ** Magit
 #+BEGIN_SRC emacs-lisp
