@@ -25,6 +25,27 @@ look like this:
 (org-babel-load-file "/home/trajanus/.emacs.d/myinit.org")
 #+END_SRC
 
+** Utility Cheat Sheet
+   |---------+-----------------------------------+-------------------|
+   | Key     | Function                          | Evil Equivalent   |
+   |---------+-----------------------------------+-------------------|
+   | C-x C-w | Write Current Buffer              | :write <filename> |
+   | C-x C-s | Save Current Buffer               | :write            |
+   | C-x C-s | Save all open Buffers             |                   |
+   | C-x b   | Switch Buffers                    | :buffer           |
+   | C-x i   | Copy file to current buffer       | :read <filename>  |
+   | C-x k   | Kill Buffer                       | :quit             |
+   | C-g     | Abort commands                    |                   |
+   | C-h t   | Emacs basic Tutorial              |                   |
+   | C-h f   | Describe Function by name         |                   |
+   | C-h v   | Describe Variable by name         |                   |
+   | C-h c   | Describe the Function a key calls |                   |
+   | C-h m   | Get mode-specific information     |                   |
+   | M-x     | Emacs Function Call               |                   |
+   | C-x C-c | Exit Emacs                        |                   |
+   |---------+-----------------------------------+-------------------|
+
+
 * Emacs runit service
   If you are on a Linux distribution which uses runit, you can also use
   my runit service for running Emacs in server mode. 
