@@ -18,6 +18,13 @@
 ;; Display battery for when in full screen mode
 (display-battery-mode t)
 
+;; Keybindings
+(global-set-key (kbd "<f5>") 'revert-buffer)
+(global-set-key (kbd "<f3>") 'org-export-dispatch)
+(global-set-key (kbd "<f6>") 'eshell) 
+(global-set-key (kbd "<f7>") 'ranger) 
+(global-set-key (kbd "<f8>") 'magit) 
+
 ;; Misc stuff
 (fset 'yes-or-no-p 'y-or-n-p)
 (server-start)
@@ -61,15 +68,38 @@
 #+BEGIN_SRC emacs-lisp
 (use-package helm
   :ensure t)
+
+(setq helm-split-window-in-side-p t
+      helm-move-to-line-cycle-in-source t)
+  
+(require 'helm-config)
+  
+;; Most of Emacs prompts become helm-enabled
+(helm-mode 1)
+
+;; List buffers ( Emacs way )
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+;; List buffers ( Vim way )
 (define-key evil-ex-map "b" 'helm-buffers-list)
-(global-set-key (kbd "<f5>") 'revert-buffer)
-(global-set-key (kbd "<f3>") 'org-export-dispatch)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
+
+;; Bookmarks menu
 (global-set-key (kbd "C-x r b") 'helm-bookmarks)
+
+;; Finding files with Helm
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+;; Use Helm for calculations
+(global-set-key (kbd "M-c") 'helm-calcul-expression)
+
+;; Improved Occur ( find stuff on buffer with regexp )
+;; Replaces the default isearch keybinding
+(global-set-key (kbd "C-s") 'helm-occur) 
+
+;; Improved M-x menu
 (global-set-key (kbd "M-x") 'helm-M-x)
+
+;; Show kill ring, pick something to paste
+(global-set-key (kbd "M-y") 'helm-show-kill-ring) 
 #+END_SRC
 
 ** Magit
@@ -265,6 +295,7 @@
 #+END_SRC
 
 #+RESULTS:
+
 * Org Mode Stuff
 ** Evil-org
 #+BEGIN_SRC emacs-lisp
@@ -316,10 +347,20 @@
  (add-to-list 'org-latex-packages-alist '("" "listings" nil))
  (setq org-latex-listings t)   
  (setq org-latex-listings-options '(("breaklines" "true")))
+
+ (use-package auctex
+   :ensure t)    
+
+ (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+ (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+ (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+ (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+ (setq reftex-plug-into-AUCTeX t)
+
  #+END_SRC 
 
  #+RESULTS:
- | breaklines | true |
  
 * Skeletons
 ** Latex
@@ -343,7 +384,6 @@
 #+END_SRC
 
 ** Org mode
-#+BEGIN_SRC emacs-lisp
 #+BEGIN_SRC emacs-lisp
 (define-skeleton org-latex-summary
 "Skeleton for summaries "
@@ -386,8 +426,21 @@
 "* Index")
 #+END_SRC
 
-#+RESULTS:
-: org-file-entry
+#+BEGIN_SRC emacs-lisp
+(define-skeleton org-wiki-index
+"Skeleton for articles "
+"Preamble:"
+"#+STARTUP: showeverything\n"
+"#+TITLE: "_"\n"
+"#+AUTHOR: Matheus Augusto da Silva\n"
+"#+STARTUP: showeverything\n"
+"\n"
+"* Index\n"
+"\n"
+"** Summaries\n"
+"[[./summaries/summaries.org][Summaries]]"
+)
+#+END_SRC
 
 * Language Related
  #+BEGIN_SRC emacs-lisp
