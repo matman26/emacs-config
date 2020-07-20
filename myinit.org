@@ -13,7 +13,7 @@
 
 ;; Line numbering
 (global-display-line-numbers-mode)
-(setq global-display-line-numbers 'relative)
+(setq display-line-numbers-type 'relative)
 
 ;; Display battery for when in full screen mode
 (display-battery-mode t)
@@ -46,18 +46,26 @@
 ** Theming & Aesthethic
 #+BEGIN_SRC emacs-lisp
 (use-package dracula-theme
+   :config
+   (load-theme 'dracula)
    :ensure t)
-(load-theme 'dracula)
    
-;; Beacon highlights the current line in the buffer
-(use-package beacon
+
+(global-hl-line-mode t) ;; This highlights the current line in the buffer
+
+(use-package beacon ;; This applies a beacon effect to the highlighted line
    :ensure t
    :config
    (beacon-mode 1))
-(global-hl-line-mode t)
 #+END_SRC
 
 * Packages
+** Try 
+#+BEGIN_SRC emacs-lisp
+(use-package try
+  :ensure t)
+#+END_SRC
+
 ** Which-key
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
