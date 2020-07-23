@@ -299,17 +299,30 @@
 #+RESULTS:
 
 * Org Mode Stuff
-** Evil-org
+** Aesthetics, customizations
 #+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    
+  (setq org-startup-indented t) ;; Indent according to section
+#+END_SRC
 
+** Evil-org for evil-mode integration
+This is very fancy, it treats org-mode elements (i.e. sections, source blocks, tables)
+as regular text objects ( 'ae' object ). Additionally, it allows reordering stuff using
+M-j, M-k, M-l and M-h instead of the regular M-<arrow keys>.
+Operators that deal with indentation ( < and > ) also indent headers.
+#+BEGIN_SRC emacs-lisp
 (use-package evil-org
   :ensure t
-  :after org
+  :after (evil org)
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
             (lambda ()
-              (evil-org-set-key-theme)))
+              (evil-org-set-key-theme '(navigation insert textobjects additional calendar))))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 #+END_SRC
