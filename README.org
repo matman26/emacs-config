@@ -7,13 +7,12 @@ look like this:
 #+BEGIN_SRC emacs-lisp
 ;; Change to your .emacs.d/ directory accordingly
 (setq user-emacs-directory "/home/trajanus/.emacs.d") 
+(require 'package)
+(require 'use-package)
 
 (package-initialize)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://stable.melpa.org/packages/"))
-
-(require 'package)
-(require 'use-package)
 
 (use-package org
   :ensure t)
