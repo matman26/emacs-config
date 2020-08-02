@@ -16,11 +16,12 @@ look like this:
 (require 'use-package)
 
 (use-package org
+  :ensure t)
+
+(use-package evil
   :ensure t
   :config
   (evil-mode 1))
-(use-package evil
-  :ensure t)
 
 ;; Change to the path where you cloned the config to
 (org-babel-load-file "/home/trajanus/.emacs.d/myinit.org")
