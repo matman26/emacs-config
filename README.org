@@ -10,16 +10,17 @@ look like this:
 
 (package-initialize)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://stable.melpa.org/packages/"))
 
 (require 'package)
 (require 'use-package)
 
 (use-package org
-  :ensure t)
+  :ensure t
+  :config
+  (evil-mode 1))
 (use-package evil
   :ensure t)
-(evil-mode 1)
 
 ;; Change to the path where you cloned the config to
 (org-babel-load-file "/home/trajanus/.emacs.d/myinit.org")
