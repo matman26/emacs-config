@@ -103,6 +103,26 @@
 
 #+RESULTS:
 : t
+** Company for Auto completion
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t
+    :config
+    (global-company-mode))
+
+  (use-package helm-company
+    :after (company)
+    (define-key company-mode-map (kbd "C-:") 'helm-company)
+    (define-key company-active-map (kbd "C-:") 'helm-company)
+    :ensure t)
+
+  (use-package company-quickhelp
+    :after (company)
+    :hook (company-mode . company-quickhelp-mode)
+    :config
+      (setq company-quickhelp-delay 0.5)
+    :ensure t)
+#+END_SRC
 
 ** Magit
 #+BEGIN_SRC emacs-lisp
